@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI</title>
+    <style>
+        .container{
+            padding: 8px;
+        }
+        .text{
+            padding: 8px;
+        }
+        input{
+            margin-left: 50px;
+            width: 100px;
+        }
+        h1{
+            padding: 8px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Tính chỉ số cân nặng</h1>
+    <div class="container">
+        <div class="text">
+            <label for="height">Nhập cân nặng:(kg)</label>
+            <input type="text" id="weight">
+        </div>
+        <div class="text">
+            <label for="height">Nhập chiều cao:(m)</label>
+            <input type="text" id="height">
+        </div>
+        <div>
+            <button type="button" onclick="check();">Kiểm tra</button>
+        </div>
+        <div>
+            <p id="Result"></p>
+            <p id="Result2"></p>
+
+        </div>
+    </div>
+
+    <script>
+        function check(){
+            let w=parseFloat(document.getElementById('weight').value);
+            let h=parseFloat(document.getElementById('height').value);
+            let bmi=w/(h*h);
+            bmi=bmi.toFixed(2);
+            document.getElementById('Result').innerHTML='Chỉ số BMI: '+bmi;
+            checkbmi(bmi);
+        }
+        function checkbmi(bmi){
+            let result2;
+            if(bmi<18){
+                result2='Bạn Gầy Quá!';
+            }
+            else if(bmi<20.0){
+                result2='Bạn Cân Đối';
+            }
+            else if(bmi<30){
+                result2='Bạn Hơi Béo Rồi!';
+            }
+            else{
+                result2='Bạn Quá Béo Rồi!!!';}
+            document.getElementById('Result2').innerHTML=result2;
+        }
+        
+    </script>
+</body>
+</html>
