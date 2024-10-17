@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day</title>
+</head>
+<body>
+    <input type="text" id="month" placeholder="Nhập tháng (1-12)">
+    <button type="button" onclick="day();">Tính số ngày</button>
+    <p id="result"></p>
+    <script>
+        function day(){
+            let d=parseInt(document.getElementById('month').value);
+            let Day;
+            if( 0 < d && d < 13 ){
+                switch (d){
+                    case 1:
+                    case 3:
+                    case 5:
+                    case 7:
+                    case 8:
+                    case 10:
+                    case 12:  {
+                        Day=31;
+                        break;
+                    }
+                    case 4:
+                    case 6:
+                    case 9:
+                    case 11:{
+                        Day=30;
+                        break;
+                    }
+                    case 2: {
+                        Day='28 hoặc 29 ngày'
+                        break;   
+                    }
+                }
+            }
+            else{
+                Day='tồn tại đâu?';
+            }
+            document.getElementById('result').innerHTML='Tháng '+d+' có '+Day;
+            
+        }
+
+    </script>
+</body>
+</html>
