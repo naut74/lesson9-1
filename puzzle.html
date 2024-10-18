@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      button {
+        width: 100px;
+        height: 100px;
+        margin: 10px;
+        background-color: rgb(127, 236, 255);
+        color: rgb(0, 0, 0);
+      }
+      body {
+        background-color: rgb(255, 255, 255);
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="result"></div>
+    <div id="success"></div>
+    <script>
+      const images1 = [
+        "https://i.ibb.co/4FrYJR3/funny-cat1-part1x1.jpg",
+        "https://i.ibb.co/CQyGWQq/funny-cat1-part2x1.jpg", 
+        "https://i.ibb.co/k07vFCb/funny-cat1-part3x1.jpg",
+        "https://i.ibb.co/Vm5ZJ0g/funny-cat1-part4x1.jpg", 
+        "https://i.ibb.co/x8zQPWW/funny-cat1-part5x1.jpg"
+        ];
+      const images2 = [
+        "https://i.ibb.co/D9TLmt1/monkey-part1x1.jpg",        
+        "https://i.ibb.co/BgT0mNN/monkey-part2x1.jpg",     
+        "https://i.ibb.co/dbx5zcc/monkey-part3x1.jpg",
+        "https://i.ibb.co/10hDp8c/monkey-part4x1.jpg",
+        "https://i.ibb.co/2KKwwzG/monkey-part5x1.jpg"
+        ];
+      const images3 = [
+        "https://i.ibb.co/V2BXPVH/panda-swap-part1x1.jpg", 
+        "https://i.ibb.co/P6CGThy/panda-swap-part2x1.jpg", 
+        "https://i.ibb.co/FK3h9Zd/panda-swap-part3x1.jpg", 
+        "https://i.ibb.co/HXWrzjs/panda-swap-part4x1.jpg", 
+        "https://i.ibb.co/N9vgw6y/panda-swap-part5x1.jpg",
+        ];
+      const images_show = [
+        "https://i.ibb.co/4FrYJR3/funny-cat1-part1x1.jpg",
+        "https://i.ibb.co/P6CGThy/panda-swap-part2x1.jpg", 
+        "https://i.ibb.co/dbx5zcc/monkey-part3x1.jpg",
+        "https://i.ibb.co/Vm5ZJ0g/funny-cat1-part4x1.jpg", 
+        "https://i.ibb.co/2KKwwzG/monkey-part5x1.jpg"
+        ];
+      let successful = document.getElementById("success");
+      let result = document.getElementById("result");
+      let success = false;
+      function initWebsite() {
+        result.innerHTML = "";
+        for (let i = 0; i < images_show.length; i++) {
+          let img = document.createElement("button");
+          img.innerHTML = images_show[i]; // => <img>i</img>
+          img.setAttribute(
+            "onclick",
+            "changeValue(" + images_show[i] + ", " + i + ")"
+          ); //<button onclick="changeValue(images_show[i], i)">1</button>
+          result.appendChild(img);
+        }
+        if (
+          images_show.toString() === images1.toString() ||
+          images_show.toString() === images3.toString() ||
+          images_show.toString() === images2.toString()
+        ) {
+          success = true;
+        } else {
+          success = false;
+        }
+        if (success) {
+          let span = document.createElement("h1");
+          span.innerHTML = "Success";
+          span.style.color = "green";
+          successful.appendChild(span);
+        } else {
+          document.getElementById("success").innerHTML = "";
+        }
+      }
+      window.onload = initWebsite();
+      //   const changeValue = (value, index) => {
+      //     if (value !== images1[index]) {
+      //       if (value === images2[index]) {
+      //         images_show[index] = images3[index];
+      //         initWebsite();
+      //       } else if (value === images3[index]) {
+      //         images_show[index] = images1[index];
+      //         initWebsite();
+      //       }
+      //     } else if (value !== images2[index]) {
+      //       if (value === images3[index]) {
+      //         images_show[index] = images1[index];
+      //         initWebsite();
+      //       } else if (value === images1[index]) {
+      //         images_show[index] = images2[index];
+      //         initWebsite();
+      //       }
+      //     } else if (value !== images3[index]) {
+      //       if (value === images1[index]) {
+      //         images_show[index] = images2[index];
+      //         initWebsite();
+      //       } else if (value === images2[index]) {
+      //         images_show[index] = images3[index];
+      //         initWebsite();
+      //       }
+      //     }
+      //   };
+
+      // <=> function changeValue(value, index)
+      //   const changeValue = (value, index) => {
+      //     switch (value) {
+      //       case images1[index]:
+      //         images_show[index] = images2[index];
+      //         initWebsite();
+      //         break;
+      //       case images2[index]:
+      //         images_show[index] = images3[index];
+      //         initWebsite();
+      //         break;
+      //       case images3[index]:
+      //         images_show[index] = images1[index];
+      //         initWebsite();
+      //         break;
+      //     }
+      //   };
+      function changeValue(value, index) {
+        value !== images1[index]
+          ? value === images2[index]
+            ? (images_show[index] = images3[index])
+            : (images_show[index] = images1[index])
+          : value === images2[index]
+          ? (images_show[index] = images1[index])
+          : (images_show[index] = images2[index]);
+        initWebsite();
+      }
+    </script>
+  </body>
+</html>
