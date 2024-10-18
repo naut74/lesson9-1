@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Do you love me</title>
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            text-align: center;
+            position: relative;
+            height: 100vh;
+            margin: 0;
+        }
+        button {
+            font-size: 20px;
+            width: 100px;
+            padding: 12px ;
+            border-radius: 10px;
+            margin: 15px;
+        }
+        button:hover{
+            background-color: rgb(22, 255, 61);
+        }
+        #btnNo {
+            background-color: red;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Do you love me?</h1>
+    <button onclick="btnYes()">Yes</button>
+    <button id="btnNo" onmouseover="noHover()" >No</button>
+
+    <script>
+        function btnYes(){
+            alert('I love you too <3');
+        }
+        function noHover(){
+            let btnNo = document.getElementById('btnNo');
+            let x = Math.round(Math.random() * (window.innerWidth - btnNo.offsetWidth));
+            let y = Math.round(Math.random() * (window.innerHeight - btnNo.offsetHeight));
+            btnNo.style.position = 'absolute'; // Đảm bảo nút NO di chuyển chính xác
+            btnNo.style.left = x + 'px';
+            btnNo.style.top = y + 'px';
+        }
+
+    </script>
+</body>
+</html>
